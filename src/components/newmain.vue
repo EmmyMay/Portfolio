@@ -94,50 +94,38 @@
             <v-layout row wrap class="buttons" hidden-sm-and-down>
 
                 <!-- Buttons for the biggest view -->
-                <v-flex d-flex xs4 sm4 md4>
-                    <v-btn   class="buttonheight" round outline color="black">  <router-link to="/about">About Me</router-link> 
-                        <v-icon color="" right>fa-fire</v-icon>
+                <v-flex v-for="link in links" :key="link.icon" d-flex xs4 sm4 md4>
+                    <v-btn   class="buttonheight" round outline color="black"> 
+                        {{link.text}}
+                        <v-icon color="" right> {{link.icon}} </v-icon>
                     </v-btn>
                 </v-flex>
-
-                <v-flex d-flex xs4 sm4 md4>
-
-                    <v-btn round class="buttonheight" outline color="black">
-                        Expertise <v-icon right>fa-clipboard </v-icon>
-                    </v-btn>
-                </v-flex>
-                <v-flex d-flex xs4 sm4 md4>
-                    <v-btn @click.stop="drawer = !drawer" round outline class="buttonheight" color="black">
+                  <v-flex d-flex xs4 sm4 md4>
+                    <v-btn @click="drawer = !drawer"   class="buttonheight" round outline color="black"> 
                         Contact
-                        <v-icon right>fa-address-card </v-icon>
+                        <v-icon color="" right> fa-address-card </v-icon>
                     </v-btn>
                 </v-flex>
+
+               
             </v-layout>
 
             <v-layout row wrap class="buttonsforxsanddown" hidden-md-and-up && hidden-xs-only>
                 <!-- buttons for the next view after the biggest -->
-                <v-flex d-flex xs4 sm4 md4>
-                    <v-btn class="buttonheight" round color="black"> About Me
-                        <v-icon right>fa-fire</v-icon>
-
-
-
-                    </v-btn>
-
-                </v-flex>
-
-                <v-flex d-flex xs4 sm4 md4>
-
-                    <v-btn round class="buttonheight" outline color="black">
-                        Expertise <v-icon right>fa-clipboard </v-icon>
+               <v-flex v-for="link in links" :key="link.icon" d-flex xs4 sm4 md4>
+                    <v-btn   class="buttonheight" round outline color="black"> 
+                        {{link.text}}
+                        <v-icon color="" right> {{link.icon}} </v-icon>
                     </v-btn>
                 </v-flex>
-                <v-flex d-flex xs4 sm4 md4>
-                    <v-btn round class="buttonheight" color="black">
+                  <v-flex d-flex xs4 sm4 md4>
+                    <v-btn @click="drawer = !drawer"   class="buttonheight" round outline color="black"> 
                         Contact
-                        <v-icon right>fa-address-card </v-icon>
+                        <v-icon color="" right> fa-address-card </v-icon>
                     </v-btn>
                 </v-flex>
+
+               
             </v-layout>
 
             <v-layout column wrap class="buttonssmandup" hidden-sm-and-up>
@@ -190,7 +178,16 @@
                         icon: 'fab fa-instagram'
                     },
                 ],
-                mini:null
+                mini:null,
+                links: [
+                    {
+                        icon: 'fa-fire', text: 'About', route: '/about'
+                    },
+                    {
+                        icon: 'fa-clipboard', text: 'Expertise', route: '/expertise'
+                    }
+
+                ]
 
             }
         },
