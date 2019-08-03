@@ -94,8 +94,8 @@
             <v-layout row wrap class="buttons" hidden-sm-and-down>
 
                 <!-- Buttons for the biggest view -->
-                <v-flex v-for="link in links" :key="link.icon" d-flex xs4 sm4 md4>
-                    <v-btn   class="buttonheight" round outline color="black"> 
+                <v-flex  v-for="(link, index) in links" :key="index" d-flex xs4 sm4 md4>
+                    <v-btn @click="goTo(index)"  router class="buttonheight" round outline color="black"> 
                         {{link.text}}
                         <v-icon color="" right> {{link.icon}} </v-icon>
                     </v-btn>
@@ -105,14 +105,17 @@
                         Contact
                         <v-icon color="" right> fa-address-card </v-icon>
                     </v-btn>
-                </v-flex>
-
-               
+                </v-flex>               
             </v-layout>
 
+
+
+                     <!-- buttons for the next view after the biggest -->
+
+
             <v-layout row wrap class="buttonsforxsanddown" hidden-md-and-up && hidden-xs-only>
-                <!-- buttons for the next view after the biggest -->
-               <v-flex v-for="link in links" :key="link.icon" d-flex xs4 sm4 md4>
+               
+               <v-flex v-for="(link, index) in links" :key="index" d-flex xs4 sm4 md4>
                     <v-btn   class="buttonheight" round outline color="black"> 
                         {{link.text}}
                         <v-icon color="" right> {{link.icon}} </v-icon>
@@ -192,8 +195,13 @@
             }
         },
         methods: {
-            setClass() {
-
+            goTo(index) {
+                console.log(index);
+                if (index === 0) {
+                    this.$router.push({ path: `/about` });
+                } else if (index === 1) {
+                    this.$router.push({ path: `/expertise` })
+                }
             }
         },
         mounted() {

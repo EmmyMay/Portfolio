@@ -1,7 +1,8 @@
 <template>
   <v-container id="home" grid-list-xs>
     <div class="foreground">
-      <mainOsaz />
+      <!-- <mainOsaz /> -->
+      <newmain />
     </div>
 
 <div class="midground">
@@ -18,12 +19,14 @@
 </template>
 
 <script>
-  import mainOsaz from '../components/mainOsaz'
+  //import mainOsaz from '../components/mainOsaz'
+  import newmain from '../components/newmain'
   
 
   export default {
     components: {
-      mainOsaz
+     // mainOsaz
+     newmain
     }
   }
 </script>
